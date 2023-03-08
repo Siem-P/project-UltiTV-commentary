@@ -7,15 +7,8 @@ import fs from "fs"
 // API URL
 const url = "https://whois.fdnd.nl/api/v1/squad/";
 
-let jsonData = fs.readFile('./public/api/game/943.json', 'utf8', handleJsonData);
-
-function handleJsonData(err, data) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  let jsonData = JSON.parse(data);
-}
+let rawGameData = fs.readFileSync('./public/api/game/943.json');
+let jsonData = JSON.parse(rawGameData);
 
 console.log(jsonData);
 
@@ -29,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
+
   res.render("index");
 });
 
