@@ -2,8 +2,16 @@
 
 <main>
 
+    <h2>Score</h2>
 
-    
+
+ <h3><%= team1Name %></h3>
+ <% team1Players.forEach(team1Player => { %>
+  <article>
+    <%= team1Player.name %> - <%= team1Player.jerseyNumber %>
+</article>
+ <% }) %>
+
 </main>
 
 

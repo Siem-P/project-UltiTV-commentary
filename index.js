@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-
-  res.render("index");
+    
+  res.render("index", jsonData);
 });
 
 app.set("port", process.env.PORT || 8000);
