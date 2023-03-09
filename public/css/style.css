@@ -1,0 +1,116 @@
+:root {
+	--white-color: #fff
+}
+
+* {
+	/* margin: 0; */
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+header {
+	display: flex;
+	height: 7em;
+	width: 100%;
+	background-color: #30343f;
+	margin-bottom: 2.5em;
+}
+
+header h1 { 
+	color: var(--white-color);
+	text-align: center;
+}
+
+.card-container {
+	padding: 1em;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  user-select: none;
+  display: grid;
+  grid-gap: 1.5em;
+  /* grid-template-columns: repeat(autofill, minmax(12.5em, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(12.5em, 1fr));
+  grid-template-rows: repeat(6, 1fr);
+  grid-auto-flow: row dense;
+  min-height: 100vh;
+}
+
+.card-container > section {
+  border-radius: 1em;
+  cursor: move;
+}
+
+.card-inner {
+  /* background-color: #fff; */
+  padding: 0 1em;
+	color: var(--white-color);
+	font-weight: bold
+}
+
+/* Cards */
+.cardGameInfo {
+  background-color: #ff0000;
+  grid-area: span 1 / span 2;
+}
+
+.cardScore {
+  background-color: #00ff00;
+  grid-area: span 4 / span 2;
+	min-height: auto;
+}
+
+.cardConfig {
+  background-color: #0000ff;
+	grid-area: span 2 / span 1;
+}
+
+.cardTeam {
+	display: flex;
+	flex-direction: column;
+  background-color: wheat;
+	grid-area: span 2 / span 3;
+}
+
+.teamPlayer-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill,minmax(10em, 1fr));
+	padding: 0.5em;
+		/* display: flex;
+		flex-flow: row wrap;
+		justify-content: center; */
+}
+
+.teamPlayer-card {
+	display: flex;
+	flex-direction: row;
+	height: 3.5em;
+	border: 3px solid black;
+	margin: 0.5em;
+	width: 10em;
+
+}
+
+.jerseyNumber {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2em;
+	height: 100%;
+	font-size: 1.5em;
+	font-weight: bold; 
+	border-right: 3px solid black;
+}
+
+.playerName {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.gameStats ul{
+	display: flex;
+ }
+
+

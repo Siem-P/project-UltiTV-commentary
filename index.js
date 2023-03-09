@@ -8,9 +8,12 @@ import fs from "fs"
 const url = "https://whois.fdnd.nl/api/v1/squad/";
 
 let rawGameData = fs.readFileSync('./public/api/game/943.json');
-let jsonData = JSON.parse(rawGameData);
+let rawStatsData = fs.readFileSync('./public/api/game/943/statistics.json');
+let parsedGameData = JSON.parse(rawGameData);
+let parsedStats = JSON.parse(rawStatsData);
 
-console.log(jsonData);
+console.log(parsedStats);
+
 
 const app = express();
 
@@ -23,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
     
-  res.render("index", jsonData);
+  res.render("index", {parsedGameData, parsedStats});
 });
 
 app.set("port", process.env.PORT || 8000);
