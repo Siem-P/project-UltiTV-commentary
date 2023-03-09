@@ -8,7 +8,8 @@
     <!-- Game Info -->
     <section class="cardGameInfo">
       <div class="card-inner">
-        <h3>Game Info</h3>
+        <h2><%= parsedGameData.field %></h2>
+        <p><%= parsedGameData.gameStatus %> - <%= parsedGameData.division %></p>
       </div>
     </section>
 
@@ -30,30 +31,48 @@
     <!-- Team 1 -->
     <section class="cardTeam">
       <div class="card-inner">
-        <h3><%= team1Name %></h3>
+        <h3><%= parsedGameData.team2Name %></h3>
       </div>
-      <% team1Players.forEach(team1Player => { %>
-        <div class="teamPlayer"> <%= team1Player.name %></div>
+      <div class="teamPlayer-container">
+      <% parsedGameData.team1Players.forEach(team1Player => { %>
+        
+        <div class="teamPlayer-card"> 
+          <div class="jerseyNumber"><%= team1Player.jerseyNumber %></div>
+        <div class="namestat-wrapper">
+          <div class="playerName"><%= team1Player.name %></div>
+          <div class="gameStats">
+            <p class="goal"><%= parsedStats.scoredPoints.filter(sp => sp.scoredBy === parsedGameData.playerId).length; %></p>
+            <p class="assist"><%= parsedStats.scoredPoints.filter(sp => sp.assistBy === parsedGameData.playerId).length; %></p>
+            <p class="block">3</p>
+            <p class="turnover">4</p>
+          </div>
+        </div>
+          
+        </div>
       <% }) %>
+    </div>
     </section>
 
     <!-- Team 2 -->
     <section class="cardTeam">
       <div class="card-inner">
-        <h3><%= team2Name %></h3>
+        <h3><%= parsedGameData.team2Name %></h3>
       </div>
       <div class="teamPlayer-container">
-      <% team2Players.forEach(team2Player => { %>
+      <% parsedGameData.team2Players.forEach(team2Player => { %>
         
         <div class="teamPlayer-card"> 
           <div class="jerseyNumber"><%= team2Player.jerseyNumber %></div>
+        <div class="namestat-wrapper">
           <div class="playerName"><%= team2Player.name %></div>
           <div class="gameStats">
-            <p class="goal"></p>
-            <p class="assist"></p>
-            <p class="block"></p>
-            <p class="turnover"></p>
+            <p class="goal"><%= parsedStats.scoredPoints.filter(sp => sp.scoredBy === parsedGameData.playerId).length; %></p>
+            <p class="assist">2</p>
+            <p class="block">3</p>
+            <p class="turnover">4</p>
           </div>
+        </div>
+          
         </div>
       <% }) %>
     </div>

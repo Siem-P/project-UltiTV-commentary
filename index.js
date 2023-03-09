@@ -12,7 +12,7 @@ let rawStatsData = fs.readFileSync('./public/api/game/943/statistics.json');
 let parsedGameData = JSON.parse(rawGameData);
 let parsedStats = JSON.parse(rawStatsData);
 
-console.log(parsedStats);
+console.log(parsedGameData);
 
 
 const app = express();

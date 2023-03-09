@@ -3,7 +3,7 @@
 }
 
 * {
-	/* margin: 0; */
+	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
@@ -103,14 +103,48 @@ header h1 {
 	border-right: 3px solid black;
 }
 
+.namestat-wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
 .playerName {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 }
 
-.gameStats ul{
+.gameStats{
+	/* padding: ; */
+	/* margin-bottom: 0.4em; */
+	width: 100%;
+	margin: 0 auto 0.2em auto;
 	display: flex;
+	justify-content: space-around;
  }
+
+/* Gamestats */
+.goal {
+	padding: 0.20em 0.35em;
+	background-color: #40fc40;
+	border-radius: 0.3em;
+}
+.assist {
+	padding: 0.20em 0.35em;
+	background-color: #3f71fc;
+	border-radius: 0.3em;
+}
+.block { 
+	padding: 0.20em 0.35em;
+	background-color: #f14545;
+	border-radius: 0.3em;
+}
+.turnover {
+	padding: 0.20em 0.35em;
+	background-color: #f7d643;
+	border-radius: 0.3em;
+}
 
 
