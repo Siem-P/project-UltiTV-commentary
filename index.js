@@ -7,8 +7,8 @@ import fs from "fs"
 // API URL
 const url = "https://whois.fdnd.nl/api/v1/squad/";
 
-let rawGameData = fs.readFileSync('./public/api/game/943.json');
-let rawStatsData = fs.readFileSync('./public/api/game/943/statistics.json');
+let rawGameData = fs.readFileSync("./private/api/game/943.json");
+let rawStatsData = fs.readFileSync("./private/api/game/943/statistics.json");
 let parsedGameData = JSON.parse(rawGameData);
 let parsedStats = JSON.parse(rawStatsData);
 
