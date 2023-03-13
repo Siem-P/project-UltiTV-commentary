@@ -1,6 +1,6 @@
 
 // Importeer express uit de node_modules map
-import express, { json, urlencoded } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs"
 
@@ -12,7 +12,7 @@ let rawStatsData = fs.readFileSync("./private/api/game/943/statistics.json");
 let parsedGameData = JSON.parse(rawGameData);
 let parsedStats = JSON.parse(rawStatsData);
 
-console.log(parsedGameData);
+// console.log(parsedGameData);
 
 
 const app = express();
