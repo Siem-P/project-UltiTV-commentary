@@ -4,7 +4,7 @@
   <header>
     <h1>UltiTV Commentary Source</h1>
   </header>
-  <section class="card-container">
+  <div class="card-container">
     <!-- Game Info -->
     <section class="cardGameInfo">
       <div class="card-inner">
@@ -40,23 +40,37 @@
         <h3><%= parsedGameData.team1Name %></h3>
       </div>
       <div class="teamPlayer-container">
-        <% parsedGameData.team1Players.forEach(team1Player => { %>
+        <% parsedGameData.team1Players.forEach(player => { %>
 
         <div class="teamPlayer-card">
-          <div class="jerseyNumber"><%= team1Player.jerseyNumber %></div>
+          <div class="jerseyNumber"><%= player.jerseyNumber %></div>
           <div class="namestat-wrapper">
-            <div class="playerName"><%= team1Player.name %></div>
+            <h4 class="playerName"><%= player.name %></h4>
             <div class="gameStats">
               <p class="goal">
-                <%= parsedStats.scoredPoints.filter(sp => sp.scoredBy ===
-                parsedGameData.playerId).length; %>
+                <%- parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length; %>
               </p>
               <p class="assist">
-                <%= parsedStats.scoredPoints.filter(sp => sp.assistBy ===
-                parsedGameData.playerId).length; %>
+                <%- parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length; %>
               </p>
-              <p class="block">3</p>
-              <p class="turnover">4</p>
+              <p class="block">
+                <%- parsedStats.scoredPoints.reduce((count, sp) => {
+                    if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
+                        return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
+                    } else {
+                        return count = 0
+                    }
+                }, 0); %>
+              </p>
+              <p class="turnover">
+                <%- parsedStats.scoredPoints.reduce((count, sp) => {
+                    if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
+                        return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
+                    } else {
+                        return count = 0
+                    }
+                }, 0); %>
+              </p>
             </div>
           </div>
         </div>
@@ -70,27 +84,44 @@
         <h3><%= parsedGameData.team2Name %></h3>
       </div>
       <div class="teamPlayer-container">
-        <% parsedGameData.team2Players.forEach(team2Player => { %>
+        <% parsedGameData.team2Players.forEach(player => { %>
 
         <div class="teamPlayer-card">
-          <div class="jerseyNumber"><%= team2Player.jerseyNumber %></div>
+          <div class="jerseyNumber"><%= player.jerseyNumber %></div>
           <div class="namestat-wrapper">
-            <div class="playerName"><%= team2Player.name %></div>
+            <h4 class="playerName"><%= player.name %></h4>
             <div class="gameStats">
-              <p class="goal">
-                <%= parsedStats.scoredPoints.filter(sp => sp.scoredBy ===
-                parsedGameData.playerId).length; %>
-              </p>
-              <p class="assist">2</p>
-              <p class="block">3</p>
-              <p class="turnover">4</p>
-            </div>
+                <p class="goal">
+                  <%- parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length; %>
+                </p>
+                <p class="assist">
+                  <%- parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length; %>
+                </p>
+                <p class="block">
+                  <%- parsedStats.scoredPoints.reduce((count, sp) => {
+                      if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
+                          return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
+                      } else {
+                          return count = 0
+                      }
+                  }, 0); %>
+                </p>
+                <p class="turnover">
+                  <%- parsedStats.scoredPoints.reduce((count, sp) => {
+                      if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
+                          return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
+                      } else {
+                          return count = 0
+                      }
+                  }, 0); %>
+                </p>
+              </div>
           </div>
         </div>
         <% }) %>
       </div>
     </section>
-  </section>
+</div>
 </main>
 
 <%- include('./partials/foot') %>

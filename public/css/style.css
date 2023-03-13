@@ -74,17 +74,17 @@ header h1 {
 /* Player cards */
 .teamPlayer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
   padding: 0.5em;
 }
 
 .teamPlayer-card {
   display: flex;
   flex-direction: row;
-  height: 3.5em;
+  height: 4em;
   border: 3px solid black;
   margin: 0.5em;
-  width: 10em;
+  width: 12em;
 }
 
 .jerseyNumber {
