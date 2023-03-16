@@ -38,10 +38,86 @@
   </section>
 
   <!-- Score -->
-  <section class="cardScore">
+  <section class="card-score">
     <div class="card-inner">
       <h3>Score</h3>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pass</th>
+          <th>Turn</th>
+          <th>O/D</th>
+          <th colspan="3">Score</th>
+          <th>O/D</th>
+          <th>Turn</th>
+          <th>Pass</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% parsedStats.scoredPoints.forEach(scoreStat => { %>
+        <tr>
+          <%# Check if team 1 scored and adjust table colors %>
+          <% if (scoreStat.scored === scoreStat.team1Name) { %>
+          <%# If team 1 was on offense during scored point -> hold, which means dark green color %>
+          <% if (scoreStat.team1OorD === "O") { %>
+          <td class="hold"><%- scoreStat.team1Passes %></td>
+          <td class="hold"><%- scoreStat.team1Turnovers %></td>
+          <td class="hold"><%- scoreStat.team1OorD %></td>
+          <% } else { %>
+          <%# If team 1 was on defence during scored point -> break, which means green color %>
+          <td class="break"><%- scoreStat.team1Passes %></td>
+          <td class="break"><%- scoreStat.team1Turnovers %></td>
+          <td class="break"><%- scoreStat.team1OorD %></td>
+          <% } %>
+          <% } else { %>
+          <%# If team 1 was scored on during defence -> conceded, which means dark red color %>
+          <% if (scoreStat.team1OorD === "D") { %>
+          <td class="conceded"><%- scoreStat.team1Passes %></td>
+          <td class="conceded"><%- scoreStat.team1Turnovers %></td>
+          <td class="conceded"><%- scoreStat.team1OorD %></td>
+          <% } else { %>
+          <%# If team 1 was scored on during offense -> broken, which means red color %>
+          <td class="broken"><%- scoreStat.team1Passes %></td>
+          <td class="broken"><%- scoreStat.team1Turnovers %></td>
+          <td class="broken"><%- scoreStat.team1OorD %></td>
+          <% } %>
+          <% } %>
+
+          <td class="table-score"><%- scoreStat.team1Score %></td>
+          <td class="table-score">-</td>
+          <td class="table-score"><%- scoreStat.team2Score %></td>
+          <%# Check if team 2 scored and adjust table colors %>
+          <% if (scoreStat.scored === scoreStat.team2Name) { %>
+          <%# If team 2 was on offense during scored point -> hold, which means dark green color %>
+          <% if (scoreStat.team2OorD === "O") { %>
+          <td class="hold"><%- scoreStat.team2OorD %></td>
+          <td class="hold"><%- scoreStat.team2Turnovers %></td>
+          <td class="hold"><%- scoreStat.team2Passes %></td>
+
+          <% } else { %>
+          <%# If team 2 was on defence during scored point -> break, which means green color %>
+          <td class="break"><%- scoreStat.team2OorD %></td>
+          <td class="break"><%- scoreStat.team2Turnovers %></td>
+          <td class="break"><%- scoreStat.team2Passes %></td>
+          <% } %>
+          <% } else { %>
+          <%# If team 2 was scored on during defence -> conceded, which means dark red color %>
+          <% if (scoreStat.team2OorD === "D") { %>
+          <td class="conceded"><%- scoreStat.team2OorD %></td>
+          <td class="conceded"><%- scoreStat.team2Turnovers %></td>
+          <td class="conceded"><%- scoreStat.team2Passes %></td>
+          <% } else { %>
+          <%# If team 2 was scored on during offense -> broken, which means red color %>
+          <td class="broken"><%- scoreStat.team2OorD %></td>
+          <td class="broken"><%- scoreStat.team2Turnovers %></td>
+          <td class="broken"><%- scoreStat.team2Passes %></td>
+          <% } %>
+          <% } %>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </section>
 
   <!-- Team 1 -->
@@ -52,35 +128,47 @@
     <div class="teamPlayer-container">
       <% parsedGameData.team1Players.forEach(player => { %>
 
-      <div class="teamPlayer-card">
+      <div class="teamPlayer-card  gender-<%- player.gender %>">
         <div class="jerseyNumber"><%= player.jerseyNumber %></div>
         <div class="namestat-wrapper">
           <h4 class="playerName"><%= player.name %></h4>
           <div class="gameStats">
-            <p class="goal">
-              <%- parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length; %>
-            </p>
-            <p class="assist">
-              <%- parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length; %>
-            </p>
-            <p class="block">
-              <%- parsedStats.scoredPoints.reduce((count, sp) => {
-                    if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
-                        return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
-                    } else {
-                        return count = 0
-                    }
-                }, 0); %>
-            </p>
-            <p class="turnover">
-              <%- parsedStats.scoredPoints.reduce((count, sp) => {
-                    if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
-                        return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
-                    } else {
-                        return count = 0
-                    }
-                }, 0); %>
-            </p>
+
+            <% 
+              let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
+              let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+              let block = parsedStats.scoredPoints.reduce((count, sp) => {
+                if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
+                    return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
+                } else {
+                    return count = 0
+                }
+              }, 0);
+              let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
+                if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
+                    return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
+                } else {
+                    return count = 0
+                }
+              }, 0);
+              %>
+            <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
+            <% if (goal > 0 ) { %>
+            <p class="goal"><%- goal; %></p>
+            <% } %>
+
+
+            <% if (assist > 0) { %>
+            <p class="assist"><%- assist %></p>
+            <% } %>
+
+            <% if (block > 0) { %>
+            <p class="block"><%- block %></p>
+            <% } %>
+
+            <% if (turnover > 0) { %>
+            <p class="turnover"><%- turnover %></p>
+            <% } %>
           </div>
         </div>
       </div>
@@ -96,35 +184,47 @@
     <div class="teamPlayer-container">
       <% parsedGameData.team2Players.forEach(player => { %>
 
-      <div class="teamPlayer-card">
+      <div class="teamPlayer-card gender-<%- player.gender %>">
         <div class="jerseyNumber"><%= player.jerseyNumber %></div>
         <div class="namestat-wrapper">
           <h4 class="playerName"><%= player.name %></h4>
           <div class="gameStats">
-            <p class="goal">
-              <%- parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length; %>
-            </p>
-            <p class="assist">
-              <%- parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length; %>
-            </p>
-            <p class="block">
-              <%- parsedStats.scoredPoints.reduce((count, sp) => {
-                      if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
-                          return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
-                      } else {
-                          return count = 0
-                      }
-                  }, 0); %>
-            </p>
-            <p class="turnover">
-              <%- parsedStats.scoredPoints.reduce((count, sp) => {
-                      if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
-                          return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
-                      } else {
-                          return count = 0
-                      }
-                  }, 0); %>
-            </p>
+
+            <% 
+              let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
+              let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+              let block = parsedStats.scoredPoints.reduce((count, sp) => {
+                if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
+                    return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
+                } else {
+                    return count = 0
+                }
+              }, 0);
+              let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
+                if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
+                    return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
+                } else {
+                    return count = 0
+                }
+              }, 0);
+              %>
+
+            <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
+            <% if (goal > 0 ) { %>
+              <p class="goal"><%- goal; %></p>
+              <% } %>
+  
+              <% if (assist > 0) { %>
+              <p class="assist"><%- assist %></p>
+              <% } %>
+  
+              <% if (block > 0) { %>
+              <p class="block"><%- block %></p>
+              <% } %>
+  
+              <% if (turnover > 0) { %>
+              <p class="turnover"><%- turnover %></p>
+              <% } %>
           </div>
         </div>
       </div>

@@ -1,10 +1,25 @@
 :root {
+  --hold-green: #51A653;
+  --break-green: #00DC32;
+  --conceded-red: #AD4D4D;
+  --broken-red: #E9111C;
+  --boy-blue: #6E9FD7;
+  --girl-pink: #F8B9D4;
+
   --white-color: #fff;
   --card-background: #F9f4EA;
-  
   --body-background: #3A3C63;
 
+
+
+  --border-radius-3: 0.3em;
+  --column-gap-6: 0.6em;
+  --row-gap-1: 1em;
+  --cell-gap-4: 0.4em;
+  --cell-gap-8: 0.8em;
+  --cell-padding-4: 0.6em;
   --block-border-radius: .5em;
+  --gamestat-padding: 0.2em 0.4em;
 }
 
 * {
@@ -62,18 +77,18 @@ section {
 /* Cards */
 .cardGameInfo {
   background-color: var(--card-background);
-  grid-area: span 2 / span 2;
+  /* grid-area: span 2 / span 2; */
 }
 
-.cardScore {
+.card-score {
   background-color: var(--card-background);
-  grid-area: span 4 / span 2;
+  /* grid-area: span 4 / span 2; */
   min-height: auto;
 }
 
 .cardConfig {
   background-color: var(--card-background);
-  grid-area: span 2 / span 1;
+  /* grid-area: span 2 / span 1; */
   height: 10em;
 }
 
@@ -81,7 +96,7 @@ section {
   display: flex;
   flex-direction: column;
   background-color: wheat;
-  grid-area: span 2 / span 3;
+  /* grid-area: span 2 / span 3; */
 }
 
 /* Player cards */
@@ -94,8 +109,9 @@ section {
 .teamPlayer-card {
   display: flex;
   flex-direction: row;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);
   height: 4em;
-  border: 3px solid black;
   margin: 0.5em;
   width: 12em;
 }
@@ -103,12 +119,21 @@ section {
 .jerseyNumber {
   display: flex;
   justify-content: center;
+  background-color: var(--jerseyColor);
   align-items: center;
   width: 2em;
   height: 100%;
   font-size: 1.5em;
   font-weight: bold;
-  border-right: 3px solid black;
+  border-right: 2px solid lightgray;
+}
+
+.gender-M{
+  border-bottom: 5px solid var(--boy-blue);
+}
+
+.gender-F{
+  border-bottom: 5px solid var(--girl-pink);
 }
 
 .namestat-wrapper {
@@ -128,32 +153,109 @@ section {
   width: 100%;
   margin: 0 auto 0.2em auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  column-gap: 0.5em;
+  margin-left: 0.5em;
 }
 
 /* Gamestats */
 .goal {
-  padding: 0.2em 0.35em;
-  background-color: #40fc40;
+  padding: var(--gamestat-padding);
+  background-color: green;
   border-radius: 0.3em;
+  color: var(--white-color);
 }
 
 .assist {
-  padding: 0.2em 0.35em;
-  background-color: #3f71fc;
+  padding: var(--gamestat-padding);
+  background-color: #5950D2;
   border-radius: 0.3em;
+  color: var(--white-color);
 }
 
 .block {
-  padding: 0.2em 0.35em;
-  background-color: #f14545;
+  padding: var(--gamestat-padding);
+  background-color: rgb(185, 43, 43);
   border-radius: 0.3em;
+  color: var(--white-color);
 }
 
 .turnover {
-  padding: 0.2em 0.35em;
-  background-color: #f7d643;
+  padding: var(--gamestat-padding);
+  background-color: #FAB617;
   border-radius: 0.3em;
+  color: black;
+}
+
+/* Scoreboard */
+
+.card-score{
+  margin: 0 0 auto 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-3);
+  padding: var(--cell-padding-4);
+  box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.75);
+}
+
+.card-score table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card-score table thead tr th{
+  padding: 0.4em 0;
+}
+
+.card-score th{
+  font-size: 0.9em;
+}
+
+.card-score tbody tr td{
+  text-align: center;
+}
+
+.card-score tbody tr:nth-child(even){
+  background: rgb(205, 203, 203);
+}
+
+.card-score tbody tr:first-of-type td:first-of-type{
+  border-top-left-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:first-of-type td:last-of-type{
+  border-top-right-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:last-of-type td:first-of-type{
+  border-bottom-left-radius: var(--border-radius-3);
+}
+
+.card-score tbody tr:last-of-type td:last-of-type{
+  border-bottom-right-radius: var(--border-radius-3);
+}
+
+.hold{
+  background: var(--hold-green);
+}
+
+.break{
+  background: var(--break-green);
+}
+
+.conceded{
+  background: var(--conceded-red);
+  color: white;
+}
+
+.broken{
+  background: var(--broken-red);
+}
+
+.table-score{
+  font-weight: bold;
+  background: var(--card-background);
 }
 
 @media (min-width: 48rem) {
