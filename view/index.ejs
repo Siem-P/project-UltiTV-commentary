@@ -137,19 +137,13 @@
             <% 
               let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
               let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+
               let block = parsedStats.scoredPoints.reduce((count, sp) => {
-                if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
-                    return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
-                } else {
-                    return count = 0
-                }
+                  return (sp.blockPlayers ? count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length : count = 0)
               }, 0);
+
               let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
-                if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
-                    return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
-                } else {
-                    return count = 0
-                }
+                  return (sp.turnoverPlayers ? count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length : count = 0)
               }, 0);
               %>
             <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
@@ -193,21 +187,15 @@
             <% 
               let goal =  parsedStats.scoredPoints.filter(sp => sp.scoredBy === player.playerId).length 
               let assist = parsedStats.scoredPoints.filter(sp => sp.assistBy === player.playerId).length
+
               let block = parsedStats.scoredPoints.reduce((count, sp) => {
-                if (sp.blockPlayers) { // need to check that there is a blockPlayers object before working on it for backwards compatibility
-                    return count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length
-                } else {
-                    return count = 0
-                }
+                  return (sp.blockPlayers ? count = count + sp.blockPlayers.filter(bp => bp === player.playerId).length : count = 0)
               }, 0);
+
               let turnover = parsedStats.scoredPoints.reduce((count, sp) => {
-                if (sp.turnoverPlayers) { // need to check that there is a turnoverPlayers object before working on it for backwards compatibility
-                    return count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length
-                } else {
-                    return count = 0
-                }
+                  return (sp.turnoverPlayers ? count = count + sp.turnoverPlayers.filter(tp => tp === player.playerId).length : count = 0)
               }, 0);
-              %>
+            %>
 
             <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
             <% if (goal > 0 ) { %>
