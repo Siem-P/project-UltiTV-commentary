@@ -4,16 +4,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs"
 
-// API URL
-const url = "https://whois.fdnd.nl/api/v1/squad/";
-
+// API URL's 
 let rawGameData = fs.readFileSync("./private/api/game/943.json");
 let rawStatsData = fs.readFileSync("./private/api/game/943/statistics.json");
 let parsedGameData = JSON.parse(rawGameData);
 let parsedStats = JSON.parse(rawStatsData);
-
-// console.log(parsedGameData);
-
 
 const app = express();
 
