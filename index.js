@@ -20,7 +20,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-    
+  // Lowercase country codes for flag API
+  parsedGameData.team1CountryISO2Code = parsedGameData.team1CountryISO2Code.toLowerCase()
+  parsedGameData.team2CountryISO2Code = parsedGameData.team2CountryISO2Code.toLowerCase()  
+
   res.render("index", {parsedGameData, parsedStats});
 });
 

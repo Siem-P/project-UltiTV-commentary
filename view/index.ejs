@@ -5,9 +5,35 @@
 <main>
   <!-- Game Info -->
   <section class="cardGameInfo">
-    <div class="card-inner">
-      <h2><%= parsedGameData.field %></h2>
-      <p><%= parsedGameData.gameStatus %> - <%= parsedGameData.division %></p>
+    <h2><%= parsedGameData.gameStatus %> - <%= parsedGameData.field %> - <%= parsedGameData.division %></h2>
+    <div class="team-info-wrapper">
+      <div class="team">
+        <!-- Flag based on Olympic Code -->
+        <img class="team-flag" src="https://flagcdn.com/<%- parsedGameData.team1CountryISO2Code %>.svg"
+          alt="Flag of <%- parsedGameData.team1CountryName %>" width="64">
+
+        <!-- Info about team such as name and olympic code -->
+        <div class="team-description">
+          <p class="team-name"><%- parsedGameData.team1Name %></p>
+          <p class="team-country">(<%- parsedGameData.team1CountryOlympicCode %>)</p>
+        </div>
+      </div>
+
+      <div class="score">
+        <p class="game-score"><%- parsedStats.team1Score %> - <%- parsedStats.team2Score %></p>
+      </div>
+
+      <div class="team">
+        <!-- Flag based on Olympic Code -->
+        <img class="team-flag" src="https://flagcdn.com/<%- parsedGameData.team2CountryISO2Code %>.svg"
+          alt="Flag of <%- parsedGameData.team2CountryName %>" width="64">
+
+        <!-- Info about team such as name and olympic code -->
+        <div class="team-description">
+          <p class="team-name"><%- parsedGameData.team2Name %></p>
+          <p class="team-country">(<%- parsedGameData.team2CountryOlympicCode %>)</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -199,20 +225,20 @@
 
             <!-- Check if stats are larger than 0, if not -> DO NOT DISPLAY STATS -->
             <% if (goal > 0 ) { %>
-              <p class="goal"><%- goal; %></p>
-              <% } %>
-  
-              <% if (assist > 0) { %>
-              <p class="assist"><%- assist %></p>
-              <% } %>
-  
-              <% if (block > 0) { %>
-              <p class="block"><%- block %></p>
-              <% } %>
-  
-              <% if (turnover > 0) { %>
-              <p class="turnover"><%- turnover %></p>
-              <% } %>
+            <p class="goal"><%- goal; %></p>
+            <% } %>
+
+            <% if (assist > 0) { %>
+            <p class="assist"><%- assist %></p>
+            <% } %>
+
+            <% if (block > 0) { %>
+            <p class="block"><%- block %></p>
+            <% } %>
+
+            <% if (turnover > 0) { %>
+            <p class="turnover"><%- turnover %></p>
+            <% } %>
           </div>
         </div>
       </div>

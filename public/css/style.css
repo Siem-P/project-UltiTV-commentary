@@ -80,6 +80,12 @@ section {
   /* grid-area: span 2 / span 2; */
 }
 
+.cardGameInfo h2 {
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+}
+
 .card-score {
   background-color: var(--card-background);
   /* grid-area: span 4 / span 2; */
@@ -98,6 +104,61 @@ section {
   background-color: wheat;
   /* grid-area: span 2 / span 3; */
 }
+
+/* Game Info */
+.team-info-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+ 
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  row-gap: 0.6em;
+  padding: var(--cell-padding-4);
+}
+
+.team-flag {
+  aspect-ratio: 2/1;
+  width: 64px;
+  object-fit: contain;
+}
+
+.team-description { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-name { 
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  font-weight: 600;
+}
+
+.team-country {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.game-score {
+  display: flex;
+  flex-direction: column;;
+}
+
+
+
 
 /* Player cards */
 .teamPlayer-container {
