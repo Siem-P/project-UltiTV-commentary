@@ -5,7 +5,7 @@
 <main>
   <!-- Game Info -->
   <section class="cardGameInfo">
-    <h2><%= parsedGameData.gameStatus %> - <%= parsedGameData.field %> - <%= parsedGameData.division %></h2>
+    <h2><%= parsedGameData.gameStatus %> - <%= parsedGameData.field %> - <% parsedGameData.division %></h2>
     <div class="team-info-wrapper">
       <div class="team">
         <!-- Flag based on Olympic Code -->
@@ -65,9 +65,7 @@
 
   <!-- Score -->
   <section class="card-score">
-    <div class="card-inner">
       <h3>Score</h3>
-    </div>
     <table>
       <thead>
         <tr>

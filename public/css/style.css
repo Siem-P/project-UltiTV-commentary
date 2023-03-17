@@ -70,7 +70,7 @@ section {
 }
 
 .card-inner {
-  padding: 0 1em;
+  padding: 1em 0 0 1em;
   font-weight: bold;
 }
 
@@ -92,6 +92,9 @@ section {
   min-height: auto;
 }
 
+.card-score h3 {
+  padding-left: 0.5em;
+}
 .cardConfig {
   background-color: var(--card-background);
   /* grid-area: span 2 / span 1; */
