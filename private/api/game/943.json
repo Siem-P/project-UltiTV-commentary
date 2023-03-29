@@ -119,6 +119,146 @@
             "pronouns": null,
             "jerseyNumber": 78,
             "hasInformation": false
+        },
+        {
+            "playerId": 8603,
+            "name": "Doris Defence ",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 4,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38917,
+            "name": "Mary Matchup",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 13,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38921,
+            "name": "Katerina Kutter",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 14,
+            "hasInformation": false
+        },
+        {
+            "playerId": 17373,
+            "name": "Jeff Fake",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 15,
+            "hasInformation": true
+        },
+        {
+            "playerId": 38920,
+            "name": "Floor Flinginger",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 34,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38918,
+            "name": "Keith Katcher",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 45,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38919,
+            "name": "Dave Deepcut",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 78,
+            "hasInformation": false
+        },
+        {
+            "playerId": 8603,
+            "name": "Doris Defence ",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 4,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38917,
+            "name": "Mary Matchup",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 13,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38921,
+            "name": "Katerina Kutter",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 14,
+            "hasInformation": false
+        },
+        {
+            "playerId": 17373,
+            "name": "Jeff Fake",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 15,
+            "hasInformation": true
+        },
+        {
+            "playerId": 38920,
+            "name": "Floor Flinginger",
+            "gender": "F",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 34,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38918,
+            "name": "Keith Katcher",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 45,
+            "hasInformation": false
+        },
+        {
+            "playerId": 38919,
+            "name": "Dave Deepcut",
+            "gender": "M",
+            "height": null,
+            "pronounced": null,
+            "pronouns": null,
+            "jerseyNumber": 78,
+            "hasInformation": false
         }
     ],
     "team2Name": "Pretend Team",

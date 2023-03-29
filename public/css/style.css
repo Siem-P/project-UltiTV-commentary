@@ -342,7 +342,7 @@ section {
     background-color: var(--card-background);
     grid-area: Game-info;
   }
-
+ 
   .cardScore {
     background-color: var(--card-background);
     grid-area: Scoreboard;
